@@ -4,7 +4,7 @@
 #        = t(n-1,w)                     : if w(n) > w
 #        = max(t(n-1,w),t(n-1,w-w(n))+B(n))
 #
-import ks_utils
+import utilities.ks_utils
 
 
 # Modify this code to incorporate your implementation.

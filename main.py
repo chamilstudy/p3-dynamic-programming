@@ -1,11 +1,11 @@
-from knapsack import *
-from ks_utils import *
-from my_tests import *
+from algorithm.knapsack import *
+from utilities.ks_utils import *
+#from utilities.my_tests import *
 
 #Check my tests
-tests = TestKSP()
-tests.test_from_data_to_item()
-tests.test_4() 
+#tests = TestKSP()
+#tests.test_from_data_to_item()
+#tests.test_4() 
 # ..                        # Add more tests as you consider convenient
 
 first_line = input().split() # N items, Capacity
