@@ -37,8 +37,10 @@ def solve_exam(items, capacity,x,y):
             item=items[n]
             wi=item.weight
             vi=item.value
-
-            if wi > w or wi > x and wi < y:
+            
+            if wi > w:
+                result=t(n-1,w,x,y)
+            elif wi < x or wi > y:
                 result=t(n-1,w,x,y)
             else:
                 result=max(t(n-1,w,x,y),t(n-1,w-wi,x,y)+vi)
