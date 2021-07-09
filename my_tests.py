@@ -1,6 +1,6 @@
 import unittest
-from ks_utils import *
-from knapsack import *
+from utilities.ks_utils import *
+from algorithm.knapsack import *
 
 class TestKSP(unittest.TestCase):
 
