@@ -1,4 +1,4 @@
-from algorithm.knapsackWeightLessThan import *
+from algorithm.knapsackWeightGreaterThan import *
 from utilities.ks_utils import *
 #from my_tests import *
 

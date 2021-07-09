@@ -1,8 +1,8 @@
 #  Recurrencia
 #
-# t(n,w) = 0                            : if n <= 0 or w = 0
-#        = t(n-1,w)                     : if w(n) > w
-#        = max(t(n-1,w),t(n-1,w-w(n))+B(n))
+# t(n,w) = 0                                     : if n <= 0 or w = 0
+#        = t(n-1,w,x)                            : if w(n) > w or w(n) > x
+#        = max(t(n-1,w,x),t(n-1,w-w(n),x)+B(n))
 #
 import utilities.ks_utils
 
@@ -13,7 +13,7 @@ import utilities.ks_utils
 # memoization or tabulation.
 
 # FIXED WEIGHT IMPLEMENTATION
-# If item weight is greater than value sent, then the algorithm ignores that item.
+# If item weight is lesser than value sent, then the algorithm ignores that item.
 def solve_exam(items, capacity,x):
 
 
@@ -23,7 +23,7 @@ def solve_exam(items, capacity,x):
         return str(n) + '|' + str(w)
 
 
-    def t(n,w):
+    def t(n,w,x):
         key=getKey(n,w)
 
         if key in cache:
@@ -38,24 +38,24 @@ def solve_exam(items, capacity,x):
             wi=item.weight
             vi=item.value
 
-            if wi > w or w > x:
-                result=t(n-1,w)
+            if wi > w or wi < x:
+                result=t(n-1,w,x)
             else:
-                result=max(t(n-1,w),t(n-1,w-wi)+vi)
+                result=max(t(n-1,w,x),t(n-1,w-wi,x)+vi)
 
             cache[key]=result
 
         return result
 
 
-    def getTaken(n,w,x):
+    def getTaken(n,w):
 
         taken = [0]*len(items)
 
         i=n
         k=w
 
-        while k>0 and i>=0 and k >= x:
+        while k>0 and i>=0:
             key_i = getKey(i,k)
             key_i1 = getKey(i-1,k)
 
@@ -78,6 +78,6 @@ def solve_exam(items, capacity,x):
 
     value = t(n,capacity,x)
 
-    taken = getTaken(n,capacity,x)
+    taken = getTaken(n,capacity)
 
     return value,taken

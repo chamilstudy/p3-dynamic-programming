@@ -1,8 +1,8 @@
 #  Recurrencia
 #
-# t(n,w) = 0                            : if n <= 0 or w = 0
-#        = t(n-1,w)                     : if w(n) > w
-#        = max(t(n-1,w),t(n-1,w-w(n))+B(n))
+# t(n,w,x) = 0                                    : if n <= 0 or w = 0
+#          = t(n-1,w,x)                           : if w(n) > w or w(n) < x
+#          = max(t(n-1,w,x),t(n-1,w-w(n),x)+B(n))
 #
 import utilities.ks_utils
 
